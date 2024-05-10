@@ -15,8 +15,6 @@
     "watch": "rollup -c --watch"
   },
   "keywords": [],
-  "author": "Siddharth Venkatesh",
-  "license": "ISC",
   "devDependencies": {
     "@rollup/plugin-commonjs": "^20.0.0",
     "@rollup/plugin-node-resolve": "^13.0.4",
