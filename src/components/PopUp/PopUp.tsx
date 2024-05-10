@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { useEffect, useRef, useState } from "react";
 import { LogoSVG } from "../../img/LogoSVG";
-
+import './reset.css'
 import "./popup.css";
 import SendButtonSVG from "../../img/SendButtonSVG";
 import CloseButton from "../../img/CloseButtonSVG";
@@ -96,7 +96,7 @@ const PopUp: any = ({ operator_id }: any) => {
 
   const pressOnSendButton = async () => {
     if (newMsg !== "") {
-      setMessages([...messages, newMsg]);
+      setMessages([...messages, {message:newMsg}]);
       sendMessage(userID, "123", newMsg);
       setNewMsg("");
     }
@@ -105,7 +105,7 @@ const PopUp: any = ({ operator_id }: any) => {
   const handleKeyPress = (e: any) => {
     if (e.keyCode === 13) {
       if (newMsg !== "") {
-        setMessages([...messages, newMsg]);
+        setMessages([...messages, {message:newMsg}]);
         sendMessage(userID, "123", newMsg);
         setNewMsg("");
       }

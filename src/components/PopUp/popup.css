@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
 .popup {
   position: fixed;
   right: 20px;
@@ -135,10 +136,24 @@
   font-family: "Open Sans";
   font-weight: 400;
   font-size: 14;
+  border: none;
   color: #393e46;
+  outline: none;
+}
+
+.input__msg::placeholder {
+  font-family: "Open Sans";
+  font-weight: 400;
+  font-size: 14;
+  color: #b9b9b9;
+}
+
+.send__msg {
+  outline: none;
 }
 
 .send__msg:active {
   transition: all 0.3s ease;
   transform: scale(0.8);
+  outline: none;
 }
