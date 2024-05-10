@@ -2,11 +2,8 @@ import React, { FC } from "react";
 import { useEffect, useRef, useState } from "react";
 import { LogoSVG } from "../../img/LogoSVG";
 
-// import send_button from "../../../public/img/send_button.png";
 import "./popup.css";
 import SendButtonSVG from "../../img/SendButtonSVG";
-// import { useDispatch, useSelector } from "react-redux";
-// import { getDialogue, sendMessage } from "../../requests";
 import CloseButton from "../../img/CloseButtonSVG";
 
 const getDialogue = async (userID: string) => {
@@ -50,12 +47,6 @@ const sendMessage = async (
 };
 
 const PopUp: any = ({ operator_id }: any) => {
-  // redux store
-  // по userhex отправка запроса на бд и вывод сообщений
-  //   const dispatch = useDispatch();
-  //   const messages = useSelector((state: any) => state.messages);
-
-  // развернуто или нет поп-ап окно
   const [active, setActive] = useState(false);
 
   const [messages, setMessages] = useState<any>([{}, {}]);
@@ -66,8 +57,6 @@ const PopUp: any = ({ operator_id }: any) => {
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
-
-  // создание userID, логичнее сделать в mainpage, но с учетом если переносить в либу отдельную - то так правильнее
 
   const generateUserId = () => {
     const hex = "0123456789ABCDEF";
@@ -84,25 +73,16 @@ const PopUp: any = ({ operator_id }: any) => {
   generateUserId();
 
   useEffect(() => {
-    // подгружаем предыдущий диалог, если он есть
     getDialogue(userID).then((data) => {
       setMessages(data);
-      //   dispatch({
-      //     type: "RECEIVE_MESSAGES",
-      //     payload: data,
-      //   });
     });
 
     const subscribe = setInterval(() => {
       getDialogue(userID).then((data) => {
         setMessages(data);
-        // dispatch({
-        //   type: "RECEIVE_MESSAGES",
-        //   payload: data,
-        // });
       });
     }, 5000);
-    // subscribe();
+
     return () => {
       clearInterval(subscribe);
     };
