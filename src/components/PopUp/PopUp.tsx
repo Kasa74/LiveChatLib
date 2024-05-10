@@ -49,7 +49,7 @@ const sendMessage = async (
 const PopUp: any = ({ operator_id }: any) => {
   const [active, setActive] = useState(false);
 
-  const [messages, setMessages] = useState<any>([{}, {}]);
+  const [messages, setMessages] = useState<any>([]);
   const [newMsg, setNewMsg] = useState<string>("");
 
   const messagesEndRef = useRef<null | HTMLDivElement>(null);
@@ -93,61 +93,19 @@ const PopUp: any = ({ operator_id }: any) => {
   }, [messages]);
 
   let userID = String(localStorage.getItem("UserID"));
-  // const subscribe = async () => {
-  //   try {
-  //     const result = await getDialogue(userID);
-  //     dispatch({
-  //       type: "RECEIVE_MESSAGES",
-  //       payload: result,
-  //     });
-  //     debugger;
-  //     await subscribe();
-  //   } catch (e) {
-  //     setTimeout(() => {
-  //       subscribe();
-  //     }, 10000);
-  //   }
-  // };
-
-  // const result = async () => {
-  //   const data = await getDialogue(userID);
-  //   dispatch({
-  //     type: "RECEIVE_MESSAGES",
-  //     payload: data,
-  //   });
-  // };
-  // result();
-  // dispatch({
-  //   type: "RECEIVE_MESSAGES",
-  //   payload: result,
-  // });
-  // }, 10000);
 
   const pressOnSendButton = async () => {
     if (newMsg !== "") {
       setMessages([...messages, newMsg]);
-      //   dispatch({
-      //     type: "ADD_MESSAGE",
-      //     payload: { message: newMsg, from_hex: userID },
-      //   });
       sendMessage(userID, "123", newMsg);
       setNewMsg("");
     }
-
-    // dispatch({
-    //   type: "ADD_MESSAGE",
-    //   payload: { message: newMsg, role: "user" },
-    // });
   };
 
   const handleKeyPress = (e: any) => {
     if (e.keyCode === 13) {
       if (newMsg !== "") {
         setMessages([...messages, newMsg]);
-        // dispatch({
-        //   type: "ADD_MESSAGE",
-        //   payload: { message: newMsg, from_hex: userID },
-        // });
         sendMessage(userID, "123", newMsg);
         setNewMsg("");
       }
