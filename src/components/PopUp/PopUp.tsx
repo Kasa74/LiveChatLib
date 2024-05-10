@@ -8,7 +8,6 @@ import SendButtonSVG from "../../img/SendButtonSVG";
 // import { useDispatch, useSelector } from "react-redux";
 // import { getDialogue, sendMessage } from "../../requests";
 import CloseButton from "../../img/CloseButtonSVG";
-import { PopupProps } from "./Button.types";
 
 const getDialogue = async (userID: string) => {
   const data = await fetch(
