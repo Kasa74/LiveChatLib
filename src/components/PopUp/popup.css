@@ -1,0 +1,159 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+.popup {
+  position: fixed;
+  right: 20px;
+  bottom: 0;
+}
+.popup__container {
+  width: 355px;
+}
+
+.popup__header {
+  width: 100%;
+  height: 83px;
+  background-color: #eeeeee;
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.operator__info {
+  margin-left: 11px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.operator__info__name {
+  font-family: "Open Sans";
+  font-weight: 600;
+  font-size: 20px;
+  color: #393e46;
+}
+
+.operator__info__status {
+  font-family: "Open Sans";
+  font-weight: 400;
+  font-size: 16px;
+  color: #00adb5;
+}
+
+.popup__close__button {
+  position: absolute;
+  right: 17px;
+  top: 9px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.popup__close__button:hover {
+  transform: scale(1.2);
+  filter: invert(48%) sepia(13%) saturate(3207%) hue-rotate(130deg)
+    brightness(95%) contrast(80%);
+}
+/* chat  */
+
+.chat {
+  height: 0;
+  transition: all 0.3s ease;
+}
+
+.chat__active {
+  width: 100%;
+  height: 524px;
+  border: 1px solid #eeeeee;
+  transition: all 0.3s ease;
+  background-color: #fff;
+}
+
+.scrollbar {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 451px;
+}
+
+.scrollbar::-webkit-scrollbar {
+  width: 5px;
+  height: 10px;
+  border-radius: 20px;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+  background: #888888;
+  border-radius: 20px;
+}
+
+.msg__block {
+  display: flex;
+  flex-direction: column;
+
+  margin: 30px 25px 0px 25px;
+}
+
+/* msg user and operator */
+.chat__operator__msg {
+  display: inline-flex;
+  align-self: flex-start;
+  background-color: #eeeeee;
+  padding: 11px 17px;
+  border-radius: 0px 15px 15px 15px;
+  font-family: "Open Sans";
+  font-weight: 400;
+  font-size: 14px;
+  color: #000000;
+  margin-bottom: 20px;
+  word-break: break-all;
+}
+
+.chat__user__msg {
+  display: inline-flex;
+  align-self: flex-end;
+  background-color: #00adb5;
+  padding: 11px 17px;
+  border-radius: 15px 0px 15px 15px;
+  font-family: "Open Sans";
+  font-weight: 400;
+  font-size: 14px;
+  color: #fff;
+  margin-bottom: 20px;
+  word-break: break-all;
+}
+
+/* send message */
+
+.send__message__block {
+  border-top: 1px solid #eeeeee;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 73px;
+  padding: 0px 17px;
+}
+
+.input__msg {
+  font-family: "Open Sans";
+  font-weight: 400;
+  font-size: 14;
+  border: none;
+  color: #393e46;
+  outline: none;
+}
+
+.input__msg::placeholder {
+  font-family: "Open Sans";
+  font-weight: 400;
+  font-size: 14;
+  color: #b9b9b9;
+}
+
+.send__msg {
+  outline: none;
+}
+
+.send__msg:active {
+  transition: all 0.3s ease;
+  transform: scale(0.8);
+  outline: none;
+}
