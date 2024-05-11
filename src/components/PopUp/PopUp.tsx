@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { useEffect, useRef, useState } from "react";
 import { LogoSVG } from "../../img/LogoSVG";
-import './reset.css'
+import "./reset.css";
 import "./popup.css";
 import SendButtonSVG from "../../img/SendButtonSVG";
 import CloseButton from "../../img/CloseButtonSVG";
@@ -73,14 +73,24 @@ const PopUp: any = ({ operator_id }: any) => {
   generateUserId();
 
   useEffect(() => {
-    getDialogue(userID).then((data) => {
-      setMessages(data);
-    });
+    getDialogue(userID)
+      .then((data) => {
+        setMessages(data);
+      })
+      .catch((error) => {
+        console.log("ошибка!!!");
+        console.error(error);
+      });
 
     const subscribe = setInterval(() => {
-      getDialogue(userID).then((data) => {
-        setMessages(data);
-      });
+      getDialogue(userID)
+        .then((data) => {
+          setMessages(data);
+        })
+        .catch((error) => {
+          console.log("ошибка!!!");
+          console.error(error);
+        });
     }, 5000);
 
     return () => {
@@ -96,7 +106,7 @@ const PopUp: any = ({ operator_id }: any) => {
 
   const pressOnSendButton = async () => {
     if (newMsg !== "") {
-      setMessages([...messages, {message:newMsg}]);
+      setMessages([...messages, { message: newMsg }]);
       sendMessage(userID, "123", newMsg);
       setNewMsg("");
     }
@@ -105,7 +115,7 @@ const PopUp: any = ({ operator_id }: any) => {
   const handleKeyPress = (e: any) => {
     if (e.keyCode === 13) {
       if (newMsg !== "") {
-        setMessages([...messages, {message:newMsg}]);
+        setMessages([...messages, { message: newMsg }]);
         sendMessage(userID, "123", newMsg);
         setNewMsg("");
       }
