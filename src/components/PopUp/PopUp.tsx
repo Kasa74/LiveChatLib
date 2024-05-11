@@ -116,7 +116,9 @@ const PopUp: any = ({ operator_id }: any) => {
     if (e.keyCode === 13) {
       if (newMsg !== "") {
         setMessages([...messages, { message: newMsg }]);
-        sendMessage(userID, "123", newMsg);
+        sendMessage(userID, "123", newMsg).catch((error) => {
+          console.error(error);
+        });
         setNewMsg("");
       }
     }
