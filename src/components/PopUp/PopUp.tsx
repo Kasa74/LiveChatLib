@@ -78,7 +78,6 @@ const PopUp: any = ({ operator_id }: any) => {
         setMessages(data);
       })
       .catch((error) => {
-        console.log("ошибка!!!");
         console.error(error);
       });
 
@@ -88,7 +87,6 @@ const PopUp: any = ({ operator_id }: any) => {
           setMessages(data);
         })
         .catch((error) => {
-          console.log("ошибка!!!");
           console.error(error);
         });
     }, 5000);
@@ -107,7 +105,9 @@ const PopUp: any = ({ operator_id }: any) => {
   const pressOnSendButton = async () => {
     if (newMsg !== "") {
       setMessages([...messages, { message: newMsg }]);
-      sendMessage(userID, "123", newMsg);
+      sendMessage(userID, "123", newMsg).catch((error) => {
+        console.error(error);
+      });
       setNewMsg("");
     }
   };
