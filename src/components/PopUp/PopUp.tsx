@@ -6,7 +6,7 @@ import "./popup.css";
 import SendButtonSVG from "../../img/SendButtonSVG";
 import CloseButton from "../../img/CloseButtonSVG";
 
-const getDialogue = async (userID: string) => {
+const getDialogue = async (operator_id: string, userID: string) => {
   const data = await fetch(
     "http://localhost:5001/api/messages/getUsersMessages",
     {
@@ -15,7 +15,7 @@ const getDialogue = async (userID: string) => {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ users_hex: ["123", userID] }),
+      body: JSON.stringify({ users_hex: [operator_id, userID] }),
     }
   )
     .then((response) => response.json())
@@ -73,7 +73,7 @@ const PopUp: any = ({ operator_id }: any) => {
   generateUserId();
 
   useEffect(() => {
-    getDialogue(userID)
+    getDialogue(operator_id, userID)
       .then((data) => {
         setMessages(data);
       })
@@ -82,7 +82,7 @@ const PopUp: any = ({ operator_id }: any) => {
       });
 
     const subscribe = setInterval(() => {
-      getDialogue(userID)
+      getDialogue(operator_id, userID)
         .then((data) => {
           setMessages(data);
         })
@@ -105,7 +105,7 @@ const PopUp: any = ({ operator_id }: any) => {
   const pressOnSendButton = async () => {
     if (newMsg !== "") {
       setMessages([...messages, { message: newMsg }]);
-      sendMessage(userID, "123", newMsg).catch((error) => {
+      sendMessage(userID, operator_id, newMsg).catch((error) => {
         console.error(error);
       });
       setNewMsg("");
@@ -116,7 +116,7 @@ const PopUp: any = ({ operator_id }: any) => {
     if (e.keyCode === 13) {
       if (newMsg !== "") {
         setMessages([...messages, { message: newMsg }]);
-        sendMessage(userID, "123", newMsg).catch((error) => {
+        sendMessage(userID, operator_id, newMsg).catch((error) => {
           console.error(error);
         });
         setNewMsg("");
@@ -150,7 +150,7 @@ const PopUp: any = ({ operator_id }: any) => {
                   <div
                     key={index}
                     className={
-                      message.from_hex !== "123"
+                      message.from_hex !== operator_id
                         ? "chat__user__msg"
                         : "chat__operator__msg"
                     }
